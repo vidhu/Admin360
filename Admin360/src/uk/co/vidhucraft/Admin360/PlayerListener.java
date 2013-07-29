@@ -1,7 +1,5 @@
 package uk.co.vidhucraft.Admin360;
 
-import java.util.HashMap;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
