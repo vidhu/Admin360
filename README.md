@@ -1,4 +1,4 @@
-Intoduction
+**Intoduction**
 Have you ever been in a situation where 10 players need help but there are only 1 or 2 admins online? If yes you would know how hard it is to keep track of the players who need help and in which order the helps were requested. Another issue many server owners have is that once they promote a hardworking player to an Admin rank or equivalent, that new Admin starts laze off and stop helping around the server while you go mental trying to sort thing out and do the job of 5 admins. This plugin attempts to solve both problems 
 
 Admin360 has two parts to it which are integrated with each other. 
