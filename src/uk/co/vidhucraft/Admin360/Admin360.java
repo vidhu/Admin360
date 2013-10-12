@@ -1,7 +1,8 @@
 package uk.co.vidhucraft.Admin360;
 
-import java.awt.List;
-import java.io.IOException;
+
+
+import java.util.ArrayList;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -10,21 +11,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Admin360 extends JavaPlugin {
-	public static List adminsOnline = new List();
+	public static ArrayList<String> adminsOnline = new ArrayList<String>();
 	public ConfigurationManager configurationManager;
 	public PlayerRequest playerRequestManager;
 	public AdminHonor adminHonorManager;
 	
 	@Override
 	public void onEnable(){
-		//Initiate Metrics
-		try{
-			Metrics metrics = new Metrics(this);
-			metrics.start();
-		}catch(IOException ex){
-			System.out.println("[Admin360] Failed to initiate Plugin Metrics");
-		}
-		
 		//Initiate Classes
 		configurationManager = new ConfigurationManager(this);
 		playerRequestManager = new PlayerRequest(this);
