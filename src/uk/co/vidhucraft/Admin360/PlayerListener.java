@@ -26,7 +26,7 @@ public class PlayerListener implements Listener {
 		Player player = playerQuitEvent.getPlayer();
 		if(player.hasPermission(Perm.RespondToRequest.getNode())){
 			try{
-			Admin360.adminsOnline.remove(playerQuitEvent.getPlayer().getName());
+				Admin360.adminsOnline.remove(playerQuitEvent.getPlayer().getName());
 			}catch(Exception ex){ }
 		}
 

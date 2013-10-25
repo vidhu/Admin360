@@ -10,17 +10,23 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PlayerRequest {
 	Admin360 plugin;
 
+	
+	LinkedList<String> playerRequestQueue = new LinkedList<String>();
+	
+	
 	public PlayerRequest(JavaPlugin plugin){
 		this.plugin = (Admin360) plugin;
 	}
-	
-	LinkedList<String> playerRequestQueue = new LinkedList<String>();
 	
 	/**
 	 * Adds a new player in the request queue for an admin to attend
 	 * @param name The player's name to add in the queue
 	 */
 	public void addPlayerInQueue(String name){
+		addPlayerInQueue(name, null);
+	}
+	
+	public void addPlayerInQueue(String name, String reason){
 		if(isAdminAvailable()){
 			if(isPlayerRequestExists(name)){
 				msgPlayer(name, ChatColor.RED + "You've already created a request");
@@ -32,6 +38,9 @@ public class PlayerRequest {
 			msgPlayer(name, "Please wait for your turn.");
 			informRequestStatus(name);
 			msgAdmins("A new request as been created by " + ChatColor.RED + name);
+			if(reason != null){
+				msgAdmins("Reason: " + ChatColor.RED + reason);
+			}
 		}else{
 			msgPlayer(name, "Sorry! There arent any admins available at the moment");
 		}
@@ -42,7 +51,7 @@ public class PlayerRequest {
 	 * @return returns true if an administrator is online
 	 */
 	public static boolean isAdminAvailable(){
-		return Admin360.adminsOnline.getItemCount() > 0;
+		return Admin360.adminsOnline.size() > 0;
 	}
 
 	/**
@@ -134,8 +143,8 @@ public class PlayerRequest {
 	 * Sends a message to all online admins
 	 */
 	public static void msgAdmins(String msg){
-		for(int i=0;i<Admin360.adminsOnline.getItemCount();i++){
-			Bukkit.getPlayerExact(Admin360.adminsOnline.getItem(i))
+		for(int i=0;i<Admin360.adminsOnline.size();i++){
+			Bukkit.getPlayerExact((String) Admin360.adminsOnline.get(i))
 			.sendMessage(ChatColor.GREEN + msg);
 		}
 	}
