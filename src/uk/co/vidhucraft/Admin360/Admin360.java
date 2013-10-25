@@ -2,6 +2,7 @@ package uk.co.vidhucraft.Admin360;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.bukkit.ChatColor;
@@ -30,6 +31,16 @@ public class Admin360 extends JavaPlugin {
 		//Load all players who are logged in already if someone reloads the server
 		Player[] players = getServer().getOnlinePlayers();
 		playerListener.loadLoggedinUsers(players);
+		
+		//Enable metrics
+		Metrics metrics;
+		try {
+			metrics = new Metrics(this);
+			metrics.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Override
